@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ConvViewController.swift
 //  navb33
 //
 //  Created by Steven Cassidy on 10/21/15.
@@ -8,12 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ConvViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    var something = -1
+    var row = -1
 
-    var row = -1;
-
-    @IBOutlet weak var tableView: UITableView!
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10;
     }
@@ -38,20 +37,35 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //performSegueWithIdentifier("conv", sender: self)
         
     }
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        print(something)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }
-
