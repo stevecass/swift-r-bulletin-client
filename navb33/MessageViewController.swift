@@ -11,6 +11,8 @@ import UIKit
 class MessageViewController: UIViewController, UITableViewDataSource {
 
 
+    var something = 2;
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10;
     }

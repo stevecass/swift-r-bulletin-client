@@ -10,7 +10,7 @@ import UIKit
 
 class ConvViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var something = -1
+    var currentConv = NSDictionary()
     var row = -1
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,7 +31,7 @@ class ConvViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "conv" {
-            (segue.destinationViewController as! ConvViewController).something = row
+            (segue.destinationViewController as! MessageViewController).something = row
         }
     }
 
@@ -49,7 +49,7 @@ class ConvViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     override func viewDidAppear(animated: Bool) {
-        print(something)
+        print(currentConv)
     }
 
     override func didReceiveMemoryWarning() {
