@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TopicViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 
     var topics = NSArray()
