@@ -12,7 +12,7 @@ class TopicViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 
     var topics = NSArray()
-    var currentConv = NSDictionary()
+    var currentTopic = NSDictionary()
 
     @IBOutlet weak var tableView: UITableView!
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,13 +27,13 @@ class TopicViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        currentConv = topics[indexPath.row] as! NSDictionary
+        currentTopic = topics[indexPath.row] as! NSDictionary
         return indexPath
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "conv" {
-            (segue.destinationViewController as! ConvViewController).currentConv = currentConv
+            (segue.destinationViewController as! ConvViewController).currentTopic = currentTopic
         }
     }
 
@@ -43,7 +43,7 @@ class TopicViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
 
-    func parseJSON(data:NSData) {
+    func showJSON(data:NSData) {
         do {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSArray
             //            print(jsonResult)
@@ -63,8 +63,7 @@ class TopicViewController: UIViewController, UITableViewDataSource, UITableViewD
         let url = NSURL(string:"http://localhost:3000/api/topics")!
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url) { (data, response, error) -> Void in
-            self.parseJSON(data!)
-            
+            self.showJSON(data!)
         }
         task.resume()
         

@@ -86,7 +86,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="nZy-gN-292" kind="show" id="mWT-4Q-Sfg"/>
+                                            <segue destination="nZy-gN-292" kind="show" identifier="msgs" id="mWT-4Q-Sfg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -106,6 +106,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Conversations" id="8iM-dW-5zD"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tableView" destination="Ekq-Pt-aUr" id="jbZ-cX-eag"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Atw-ZY-zaL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -160,6 +163,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Messages" id="PN6-j0-RKA"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tableView" destination="96A-A5-LgD" id="O9w-gS-43g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQf-XF-nar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

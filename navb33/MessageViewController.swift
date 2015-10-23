@@ -11,23 +11,69 @@ import UIKit
 class MessageViewController: UIViewController, UITableViewDataSource {
 
 
-    var something = 2;
+    @IBOutlet weak var tableView: UITableView!
+    var currentConversation = NSDictionary()
+    var messages = NSArray()
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
+        return messages.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel?.text = String(indexPath.row * 101 + 202)
+        cell.textLabel?.text = String(messages[indexPath.row].objectForKey("content")!)
         return cell
     }
 
+    func showErrorAlert(error:NSString) {
+        /*
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"My Alert"
+        message:@"This is an alert."
+        preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+        handler:^(UIAlertAction * action) {}];
+
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        */
+
+        let alert = UIAlertController.init(title: "Comms error", message: String(error), preferredStyle: UIAlertControllerStyle.Alert)
+        let defaultAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
+            // do nothing
+        }
+        alert.addAction(defaultAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
+
+    func showJSON(data:NSData) {
+        do {
+            let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            currentConversation = jsonResult
+            messages = jsonResult.objectForKey("messages") as! NSArray
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+        } catch {
+            showErrorAlert((error as NSError).localizedDescription)
+            print("Fetch failed: \((error as NSError).localizedDescription)")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        print("vdl in MessageViewController")
+        if let topicId = currentConversation.objectForKey("topic_id") {
+            if let convId = currentConversation.objectForKey("id") {
+                let url = NSURL(string:"http://localhost:3000/api/topics/\(topicId)/conversations/\(convId)")!
+                let session = NSURLSession.sharedSession()
+                let task = session.dataTaskWithURL(url) { (data, response, error) -> Void in
+                    self.showJSON(data!)
+                }
+                task.resume()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
