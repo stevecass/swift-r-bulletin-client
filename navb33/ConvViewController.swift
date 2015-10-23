@@ -40,18 +40,6 @@ class ConvViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func showErrorAlert(error:NSString) {
-        /*
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"My Alert"
-        message:@"This is an alert."
-        preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-        handler:^(UIAlertAction * action) {}];
-
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        */
-
         let alert = UIAlertController.init(title: "Comms error", message: String(error), preferredStyle: UIAlertControllerStyle.Alert)
         let defaultAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
             // do nothing
@@ -73,8 +61,6 @@ class ConvViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         print("vdl in ConvViewController")
@@ -95,16 +81,4 @@ class ConvViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
