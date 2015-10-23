@@ -20,8 +20,9 @@ class MessageViewController: UIViewController, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel?.text = String(messages[indexPath.row].objectForKey("content")!)
+        let cell = tableView.dequeueReusableCellWithIdentifier("msgcell", forIndexPath: indexPath) as! MessageTableViewCell
+        let message = String(messages[indexPath.row].objectForKey("content")!)
+        cell.lblMain.text = message
         return cell
     }
 
@@ -52,9 +53,12 @@ class MessageViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("vdl in MessageViewController")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 160.0
         if let topicId = currentConversation.objectForKey("topic_id") {
             if let convId = currentConversation.objectForKey("id") {
                 let url = NSURL(string:"http://localhost:3000/api/topics/\(topicId)/conversations/\(convId)")!
+                print("Will call \(url)")
                 let session = NSURLSession.sharedSession()
                 let task = session.dataTaskWithURL(url) { (data, response, error) -> Void in
                     self.showJSON(data!)

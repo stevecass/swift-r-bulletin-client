@@ -21,6 +21,7 @@ class TopicViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        cell.textLabel?.font = cell.textLabel?.font.fontWithSize(12)
         cell.textLabel?.text = String(topics[indexPath.row].objectForKey("name")!)
         return cell
     }
@@ -46,7 +47,6 @@ class TopicViewController: UIViewController, UITableViewDataSource, UITableViewD
     func showJSON(data:NSData) {
         do {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-            //            print(jsonResult)
             topics = jsonResult
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -61,6 +61,7 @@ class TopicViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let url = NSURL(string:"http://localhost:3000/api/topics")!
+        print("Will call \(url)")
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url) { (data, response, error) -> Void in
             self.showJSON(data!)

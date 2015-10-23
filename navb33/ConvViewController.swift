@@ -22,18 +22,24 @@ class ConvViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        cell.textLabel?.font = cell.textLabel?.font.fontWithSize(12)
         cell.textLabel?.text = String(convs[indexPath.row].objectForKey("name")!)
         return cell
     }
 
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        print("CVC willSelect \(indexPath.row)")
         selectedConversation = convs[indexPath.row] as! NSDictionary
-        print(selectedConversation)
         return indexPath
     }
 
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        print("CVC didSelect \(indexPath.row)")
+
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("prepareForSegue in Conv VC")
+        print("CVC prepareForSegue")
         if segue.identifier == "msgs" {
             (segue.destinationViewController as! MessageViewController).currentConversation = selectedConversation
         }
@@ -63,9 +69,10 @@ class ConvViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("vdl in ConvViewController")
+        print("CVC vdl")
         if let topicId = currentTopic.objectForKey("id") {
             let url = NSURL(string:"http://localhost:3000/api/topics/\(topicId)/conversations")!
+            print("Will call \(url)")
             let session = NSURLSession.sharedSession()
             let task = session.dataTaskWithURL(url) { (data, response, error) -> Void in
                 self.showJSON(data!)
