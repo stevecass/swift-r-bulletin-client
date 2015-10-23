@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConvViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ConvViewController: RbcViewController, UITableViewDataSource, UITableViewDelegate {
 
 
     @IBOutlet weak var tableView: UITableView!
@@ -45,15 +45,6 @@ class ConvViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
-    func showErrorAlert(error:NSString) {
-        let alert = UIAlertController.init(title: "Comms error", message: String(error), preferredStyle: UIAlertControllerStyle.Alert)
-        let defaultAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
-            // do nothing
-        }
-        alert.addAction(defaultAction)
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-
     func showJSON(data:NSData) {
         do {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSArray
@@ -62,7 +53,7 @@ class ConvViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.tableView.reloadData()
             })
         } catch {
-            showErrorAlert((error as NSError).localizedDescription)
+            showErrorAlert("Communications", error:(error as NSError).localizedDescription)
             print("Fetch failed: \((error as NSError).localizedDescription)")
         }
     }

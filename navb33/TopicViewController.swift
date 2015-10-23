@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopicViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TopicViewController: RbcViewController, UITableViewDataSource, UITableViewDelegate {
 
 
     var topics = NSArray()
@@ -44,16 +44,20 @@ class TopicViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
 
-    func showJSON(data:NSData) {
-        do {
-            let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-            topics = jsonResult
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadData()
-            })
-        } catch {
-            print("Fetch failed: \((error as NSError).localizedDescription)")
+    func showJSON(data:NSData?) {
+        if data != nil {
+            do {
+                let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+                topics = jsonResult
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+            } catch {
+                print("Fetch failed: \((error as NSError).localizedDescription)")
+            }
+        } else {
+            showErrorAlert("Communications", error:"No data retrieved from server. Network?")
         }
     }
 
@@ -64,7 +68,7 @@ class TopicViewController: UIViewController, UITableViewDataSource, UITableViewD
         print("Will call \(url)")
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url) { (data, response, error) -> Void in
-            self.showJSON(data!)
+            self.showJSON(data)
         }
         task.resume()
         

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageViewController: UIViewController, UITableViewDataSource {
+class MessageViewController: RbcViewController, UITableViewDataSource {
 
 
     @IBOutlet weak var tableView: UITableView!
@@ -26,16 +26,6 @@ class MessageViewController: UIViewController, UITableViewDataSource {
         return cell
     }
 
-    func showErrorAlert(error:NSString) {
-        let alert = UIAlertController.init(title: "Comms error", message: String(error), preferredStyle: UIAlertControllerStyle.Alert)
-        let defaultAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
-            // do nothing
-        }
-        alert.addAction(defaultAction)
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-
-
     func showJSON(data:NSData) {
         do {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
@@ -45,7 +35,7 @@ class MessageViewController: UIViewController, UITableViewDataSource {
                 self.tableView.reloadData()
             })
         } catch {
-            showErrorAlert((error as NSError).localizedDescription)
+            showErrorAlert("Communications", error:(error as NSError).localizedDescription)
             print("Fetch failed: \((error as NSError).localizedDescription)")
         }
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B016C5AD1BD9E70A009D12A7 /* RbcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B016C5AC1BD9E70A009D12A7 /* RbcViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		B06F095A1BD87825005C935E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F09591BD87825005C935E /* AppDelegate.swift */; };
 		B06F095C1BD87825005C935E /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F095B1BD87825005C935E /* TopicViewController.swift */; };
 		B06F095F1BD87825005C935E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B06F095D1BD87825005C935E /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B016C5AC1BD9E70A009D12A7 /* RbcViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RbcViewController.swift; sourceTree = "<group>"; };
 		B06F09561BD87825005C935E /* navb33.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = navb33.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06F09591BD87825005C935E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B06F095B1BD87825005C935E /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				B06F09591BD87825005C935E /* AppDelegate.swift */,
 				B06F095B1BD87825005C935E /* TopicViewController.swift */,
+				B016C5AC1BD9E70A009D12A7 /* RbcViewController.swift */,
 				B06F096B1BD87CA3005C935E /* ConvViewController.swift */,
 				B0E2A6091BD9DAD5009ABB95 /* MessageTableViewCell.swift */,
 				B06F095D1BD87825005C935E /* Main.storyboard */,
@@ -147,6 +150,7 @@
 				B06F096C1BD87CA3005C935E /* ConvViewController.swift in Sources */,
 				B06F096E1BD8819E005C935E /* MessageViewController.swift in Sources */,
 				B0E2A60B1BD9DAD5009ABB95 /* MessageTableViewCell.swift in Sources */,
+				B016C5AD1BD9E70A009D12A7 /* RbcViewController.swift in Sources */,
 				B06F095A1BD87825005C935E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
