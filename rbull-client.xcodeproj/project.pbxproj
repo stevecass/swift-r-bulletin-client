@@ -20,7 +20,7 @@
 
 /* Begin PBXFileReference section */
 		B016C5AC1BD9E70A009D12A7 /* RbcViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RbcViewController.swift; sourceTree = "<group>"; };
-		B06F09561BD87825005C935E /* navb33.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = navb33.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B06F09561BD87825005C935E /* rbull-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rbull-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06F09591BD87825005C935E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B06F095B1BD87825005C935E /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
 		B06F095E1BD87825005C935E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		B06F094D1BD87825005C935E = {
 			isa = PBXGroup;
 			children = (
-				B06F09581BD87825005C935E /* navb33 */,
+				B06F09581BD87825005C935E /* rbull */,
 				B06F09571BD87825005C935E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,12 +54,12 @@
 		B06F09571BD87825005C935E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B06F09561BD87825005C935E /* navb33.app */,
+				B06F09561BD87825005C935E /* rbull-client.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B06F09581BD87825005C935E /* navb33 */ = {
+		B06F09581BD87825005C935E /* rbull */ = {
 			isa = PBXGroup;
 			children = (
 				B06F09591BD87825005C935E /* AppDelegate.swift */,
@@ -73,15 +73,16 @@
 				B06F09621BD87825005C935E /* LaunchScreen.storyboard */,
 				B06F09651BD87825005C935E /* Info.plist */,
 			);
+			name = rbull;
 			path = navb33;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B06F09551BD87825005C935E /* navb33 */ = {
+		B06F09551BD87825005C935E /* rbull-client */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B06F09681BD87825005C935E /* Build configuration list for PBXNativeTarget "navb33" */;
+			buildConfigurationList = B06F09681BD87825005C935E /* Build configuration list for PBXNativeTarget "rbull-client" */;
 			buildPhases = (
 				B06F09521BD87825005C935E /* Sources */,
 				B06F09531BD87825005C935E /* Frameworks */,
@@ -91,9 +92,9 @@
 			);
 			dependencies = (
 			);
-			name = navb33;
+			name = "rbull-client";
 			productName = navb33;
-			productReference = B06F09561BD87825005C935E /* navb33.app */;
+			productReference = B06F09561BD87825005C935E /* rbull-client.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -110,7 +111,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B06F09511BD87825005C935E /* Build configuration list for PBXProject "navb33" */;
+			buildConfigurationList = B06F09511BD87825005C935E /* Build configuration list for PBXProject "rbull-client" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -123,7 +124,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B06F09551BD87825005C935E /* navb33 */,
+				B06F09551BD87825005C935E /* rbull-client */,
 			);
 		};
 /* End PBXProject section */
@@ -267,7 +268,7 @@
 				INFOPLIST_FILE = navb33/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scass.navb33;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "rbull-client";
 			};
 			name = Debug;
 		};
@@ -278,14 +279,14 @@
 				INFOPLIST_FILE = navb33/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scass.navb33;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "rbull-client";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B06F09511BD87825005C935E /* Build configuration list for PBXProject "navb33" */ = {
+		B06F09511BD87825005C935E /* Build configuration list for PBXProject "rbull-client" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B06F09661BD87825005C935E /* Debug */,
@@ -294,7 +295,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B06F09681BD87825005C935E /* Build configuration list for PBXNativeTarget "navb33" */ = {
+		B06F09681BD87825005C935E /* Build configuration list for PBXNativeTarget "rbull-client" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B06F09691BD87825005C935E /* Debug */,
