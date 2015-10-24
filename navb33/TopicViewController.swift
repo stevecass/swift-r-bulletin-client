@@ -13,6 +13,7 @@ class TopicViewController: RbcViewController, UITableViewDataSource, UITableView
 
     var topics = NSArray()
     var currentTopic = NSDictionary()
+    let refreshControl = UIRefreshControl()
 
     @IBOutlet weak var tableView: UITableView!
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,11 +60,10 @@ class TopicViewController: RbcViewController, UITableViewDataSource, UITableView
         } else {
             showErrorAlert("Communications", error:"No data retrieved from server. Network?")
         }
+        self.refreshControl.endRefreshing()
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
+    func loadTopics() {
         let url = NSURL(string:"http://localhost:3000/api/topics")!
         print("Will call \(url)")
         let session = NSURLSession.sharedSession()
@@ -71,6 +71,19 @@ class TopicViewController: RbcViewController, UITableViewDataSource, UITableView
             self.showJSON(data)
         }
         task.resume()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+    }
+
+  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadTopics()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: "loadTopics", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refreshControl)
         
     }
 
