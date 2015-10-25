@@ -4,7 +4,7 @@ A minimal app to demo to students techniques for connecting to a JSON api and us
 
 ##Notes
 
-* NSAppTransportSecurity - NSAllowsArbitraryLoads for non-http communication
+* NSAppTransportSecurity - NSAllowsArbitraryLoads for non-https
 * Use of segues
 * UITableViewDataSource, UITableViewDelegate 
 * willSelectRowAtIndexPath, prepareForSegue, didSelect...
