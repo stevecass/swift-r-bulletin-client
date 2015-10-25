@@ -47,7 +47,13 @@
                             <constraint firstItem="iRZ-qw-tCh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qcQ-AX-nIZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Topics" id="DbJ-a3-sDc"/>
+                    <navigationItem key="navigationItem" title="Topics" id="DbJ-a3-sDc">
+                        <barButtonItem key="rightBarButtonItem" title="Login" id="bKZ-bY-yzF">
+                            <connections>
+                                <action selector="loginClicked:" destination="BYZ-38-t0r" id="tbX-4U-lgp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="iRZ-qw-tCh" id="c11-Vh-yCL"/>
                     </connections>

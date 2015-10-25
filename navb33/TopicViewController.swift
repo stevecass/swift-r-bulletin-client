@@ -19,6 +19,11 @@ class TopicViewController: RbcViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return topics.count
     }
+    @IBAction func loginClicked(sender: AnyObject) {
+        let vc = LoginViewController(nibName:"LoginViewController", bundle: nil)
+        vc.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        presentViewController(vc, animated: true, completion: nil)
+    }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)

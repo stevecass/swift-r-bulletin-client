@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		529377D81BDC552C00F26223 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529377D61BDC552C00F26223 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		529377D91BDC552C00F26223 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529377D71BDC552C00F26223 /* LoginViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		B016C5AD1BD9E70A009D12A7 /* RbcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B016C5AC1BD9E70A009D12A7 /* RbcViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		B06F095A1BD87825005C935E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F09591BD87825005C935E /* AppDelegate.swift */; };
 		B06F095C1BD87825005C935E /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F095B1BD87825005C935E /* TopicViewController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		529377D61BDC552C00F26223 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		529377D71BDC552C00F26223 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		B016C5AC1BD9E70A009D12A7 /* RbcViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RbcViewController.swift; sourceTree = "<group>"; };
 		B06F09561BD87825005C935E /* rbull-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rbull-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06F09591BD87825005C935E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				B06F095B1BD87825005C935E /* TopicViewController.swift */,
 				B016C5AC1BD9E70A009D12A7 /* RbcViewController.swift */,
 				B06F096B1BD87CA3005C935E /* ConvViewController.swift */,
+				529377D61BDC552C00F26223 /* LoginViewController.swift */,
+				529377D71BDC552C00F26223 /* LoginViewController.xib */,
 				B0E2A6091BD9DAD5009ABB95 /* MessageTableViewCell.swift */,
 				B06F095D1BD87825005C935E /* Main.storyboard */,
 				B06F096D1BD8819E005C935E /* MessageViewController.swift */,
@@ -134,6 +140,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				529377D91BDC552C00F26223 /* LoginViewController.xib in Resources */,
 				B06F09641BD87825005C935E /* LaunchScreen.storyboard in Resources */,
 				B06F09611BD87825005C935E /* Assets.xcassets in Resources */,
 				B06F095F1BD87825005C935E /* Main.storyboard in Resources */,
@@ -147,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				529377D81BDC552C00F26223 /* LoginViewController.swift in Sources */,
 				B06F095C1BD87825005C935E /* TopicViewController.swift in Sources */,
 				B06F096C1BD87CA3005C935E /* ConvViewController.swift in Sources */,
 				B06F096E1BD8819E005C935E /* MessageViewController.swift in Sources */,
