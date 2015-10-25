@@ -6,8 +6,12 @@ A minimal app to demo to students techniques for connecting to a JSON api and us
 
 * NSAppTransportSecurity - NSAllowsArbitraryLoads for non-https
 * Use of segues
-* UITableViewDataSource, UITableViewDelegate 
+* UITableViewDataSource, UITableViewDelegate
 * willSelectRowAtIndexPath, prepareForSegue, didSelect...
-* dispatch_async for updating ui
+* Using dispatch_async(dispatch_get_main_queue(), {}) from background tasks for UI updates
 * NSURLSession#dataTaskWithURL with closure
+* NSURLSession#dataTaskWithRequest
 * UIRefreshControl for pull to update
+* Presenting a view from nib rather than storyboard
+* Presenting a modal view
+* Using NSMutableURLRequest for method, headers etc

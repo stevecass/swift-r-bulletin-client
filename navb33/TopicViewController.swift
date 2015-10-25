@@ -8,14 +8,28 @@
 
 import UIKit
 
-class TopicViewController: RbcViewController, UITableViewDataSource, UITableViewDelegate {
+class TopicViewController: RbcViewController, UITableViewDataSource, UITableViewDelegate, LoginViewDelegate {
 
 
     var topics = NSArray()
     var currentTopic = NSDictionary()
     let refreshControl = UIRefreshControl()
-
     @IBOutlet weak var tableView: UITableView!
+
+
+    @IBAction func loginClicked(sender: AnyObject) {
+        let vc = LoginViewController(nibName:"LoginViewController", bundle: nil)
+        vc.loginViewDelegate = self
+        vc.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        presentViewController(vc, animated: true, completion: nil)
+    }
+
+    func loginViewDismissed(username:String, loginSuccess:Bool) {
+        if (loginSuccess) {
+            NSUserDefaults.standardUserDefaults().setValue(username, forKey: "username")
+        }
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return topics.count
     }
