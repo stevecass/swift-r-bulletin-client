@@ -8,7 +8,80 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+protocol LoginViewDelegate {
+    func loginViewDismissed(username:String, loginSuccess: Bool)
+}
+
+class LoginViewController: RbcViewController {
+
+    var loginViewDelegate: LoginViewDelegate?
+    @IBOutlet weak var tfUsername: UITextField!
+    @IBOutlet weak var tfPassword: UITextField!
+
+    @IBAction func cancelPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+
+    }
+
+    @IBAction func loginPressed(sender: AnyObject) {
+        if loginViewDelegate == nil {
+            showErrorAlert("Internal error", error: "Can't handle login")
+            self.dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            sendLoginRequest()
+        }
+    }
+
+    func processLoginResult(data: NSData?) {
+        do {
+            if data != nil {
+                let response = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                if response["status"] as! NSInteger == 200 {
+                    loginViewDelegate?.loginViewDismissed(self.tfUsername.text!, loginSuccess:true)
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    })
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.showErrorAlert("Login failed", error: "Login failed")
+                    })
+                }
+            }
+        } catch let error as NSError {
+            print("in catch block")
+            print(error)
+        }
+    }
+
+    func sendLoginRequest() {
+        let credentials = NSMutableDictionary()
+        credentials.setObject(tfUsername.text!, forKey: "username")
+        credentials.setObject(tfPassword.text!, forKey: "password")
+        do {
+            let requestBody = try NSJSONSerialization.dataWithJSONObject(credentials, options: NSJSONWritingOptions.PrettyPrinted )
+            print(NSString(data: requestBody, encoding: NSUTF8StringEncoding))
+            let url = NSURL(string:"http://localhost:3000/api/sessions")!
+            let request = NSMutableURLRequest(URL:url)
+            request.setValue("application/json", forHTTPHeaderField: "Content-type")
+            request.HTTPMethod = "POST"
+            request.HTTPBody = requestBody;
+            print("Will call \(url)")
+            let session = NSURLSession.sharedSession()
+            let task = session.dataTaskWithRequest(request){ (data, response, error) -> Void in
+                let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                print(strData)
+                //print(response)
+                //print(error)
+                self.processLoginResult(data)
+            }
+            task.resume()
+
+        } catch let error as NSError {
+            print("in catch block")
+            print(error)
+
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
