@@ -48,8 +48,9 @@ class LoginViewController: RbcViewController {
                 }
             }
         } catch let error as NSError {
-            print("in catch block")
-            print(error)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.showErrorAlert("Login failed", error: error.localizedDescription)
+            })
         }
     }
 
@@ -59,7 +60,6 @@ class LoginViewController: RbcViewController {
         credentials.setObject(tfPassword.text!, forKey: "password")
         do {
             let requestBody = try NSJSONSerialization.dataWithJSONObject(credentials, options: NSJSONWritingOptions.PrettyPrinted )
-            print(NSString(data: requestBody, encoding: NSUTF8StringEncoding))
             let url = NSURL(string:"http://localhost:3000/api/sessions")!
             let request = NSMutableURLRequest(URL:url)
             request.setValue("application/json", forHTTPHeaderField: "Content-type")
@@ -68,18 +68,18 @@ class LoginViewController: RbcViewController {
             print("Will call \(url)")
             let session = NSURLSession.sharedSession()
             let task = session.dataTaskWithRequest(request){ (data, response, error) -> Void in
-                let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print(strData)
-                //print(response)
-                //print(error)
-                self.processLoginResult(data)
+                if (error != nil) {
+                    self.processLoginResult(data)
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.showErrorAlert("Login failed", error: error!.localizedDescription)
+                    })
+                }
             }
             task.resume()
 
         } catch let error as NSError {
-            print("in catch block")
-            print(error)
-
+            self.showErrorAlert("Login failed", error: error.localizedDescription)
         }
     }
 
