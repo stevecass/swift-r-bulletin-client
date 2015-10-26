@@ -35,8 +35,9 @@ class LoginViewController: RbcViewController {
     func processLoginResult(data: NSData?) {
         do {
             if data != nil {
-                let response = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                if response["status"] as! NSInteger == 200 {
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                print(json)
+                if json["status"] as! NSInteger == 200 {
                     loginViewDelegate?.loginViewDismissed(self.tfUsername.text!, loginSuccess:true)
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.dismissViewControllerAnimated(true, completion: nil)
@@ -68,7 +69,7 @@ class LoginViewController: RbcViewController {
             print("Will call \(url)")
             let session = NSURLSession.sharedSession()
             let task = session.dataTaskWithRequest(request){ (data, response, error) -> Void in
-                if (error != nil) {
+                if (error == nil) {
                     self.processLoginResult(data)
                 } else {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
