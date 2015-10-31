@@ -10,6 +10,20 @@ import UIKit
 
 class RbcViewController: UIViewController {
 
+    var dsParser : NSDateFormatter {
+        let df = NSDateFormatter()
+        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"
+        return df
+    }
+
+    var dsFormatter: NSDateFormatter {
+        let df = NSDateFormatter()
+        df.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        df.dateFormat = "MMM d, HH:mm"
+        return df
+    }
+
     func showErrorAlert(title:String, error:NSString) {
         let alert = UIAlertController.init(title: title, message: String(error), preferredStyle: UIAlertControllerStyle.Alert)
         let defaultAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
@@ -20,10 +34,18 @@ class RbcViewController: UIViewController {
     }
 
     func dateFromJson(dateString:String) -> NSDate? {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
-        return dateFormatter.dateFromString(dateString)
+        return dsParser.dateFromString(dateString)
+    }
+
+    func displayDateFromJSON(dateString: String) -> String {
+        let d = dateFromJson(dateString)
+        if d != nil {
+            return dsFormatter.stringFromDate(d!)
+        } else {
+            return "Did not parse " + dateString + " as date"
+        }
+        
+        
     }
 
 }
