@@ -22,7 +22,11 @@ class MessageViewController: RbcViewController, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("msgcell", forIndexPath: indexPath) as! MessageTableViewCell
         let message = String(messages[indexPath.row].objectForKey("content")!)
+        let userName = String(messages[indexPath.row].objectForKey("username")!)
+        let displayDate = displayDateFromJSON(String(messages[indexPath.row].objectForKey("updated_at")!))
+
         cell.lblMain.text = message
+        cell.lblSecondary.text = "From \(userName) at \(displayDate) "
         return cell
     }
 
