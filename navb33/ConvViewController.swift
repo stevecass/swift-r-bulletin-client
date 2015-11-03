@@ -41,7 +41,8 @@ class ConvViewController: RbcViewController, UITableViewDataSource, UITableViewD
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print("CVC prepareForSegue")
         if segue.identifier == "msgs" {
-            (segue.destinationViewController as! MessageViewController).currentConversation = selectedConversation
+            let dest = segue.destinationViewController as! MessageViewController
+            dest.currentConversation = selectedConversation
         }
     }
 

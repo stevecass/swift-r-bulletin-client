@@ -12,6 +12,7 @@ class MessageTableViewCell: UITableViewCell {
 
 
     @IBOutlet weak var lblMain: UILabel!
+    @IBOutlet weak var lblSecondary: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
