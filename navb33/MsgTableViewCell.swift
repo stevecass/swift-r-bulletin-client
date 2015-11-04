@@ -10,10 +10,11 @@ import UIKit
 
 class MsgTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lblAuthor: UILabel!
     @IBOutlet weak var lblMain: UILabel!
+    @IBOutlet weak var btnAuthor: UIButton!
 
     @IBAction func btnClicked(sender: AnyObject) {
+        print("button clicked")
     }
     
     override func awakeFromNib() {

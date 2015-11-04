@@ -26,7 +26,7 @@ class MessageViewController: RbcViewController, UITableViewDataSource {
         let displayDate = displayDateFromJSON(String(messages[indexPath.row].objectForKey("updated_at")!))
 
         cell.lblMain.text = message
-        cell.lblAuthor.text = "From \(userName) at \(displayDate) "
+        cell.btnAuthor.setTitle("From \(userName) at \(displayDate)", forState: UIControlState.Normal) 
         cell.setNeedsUpdateConstraints()
         cell.updateConstraintsIfNeeded()
         return cell
