@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5270252D1BE9667C00B5DE92 /* MsgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5270252B1BE9667C00B5DE92 /* MsgTableViewCell.swift */; };
+		5270252E1BE9667C00B5DE92 /* MsgTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5270252C1BE9667C00B5DE92 /* MsgTableViewCell.xib */; };
 		529377D81BDC552C00F26223 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529377D61BDC552C00F26223 /* LoginViewController.swift */; };
 		529377D91BDC552C00F26223 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529377D71BDC552C00F26223 /* LoginViewController.xib */; };
 		B016C5AD1BD9E70A009D12A7 /* RbcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B016C5AC1BD9E70A009D12A7 /* RbcViewController.swift */; };
@@ -18,10 +20,11 @@
 		B06F096C1BD87CA3005C935E /* ConvViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F096B1BD87CA3005C935E /* ConvViewController.swift */; };
 		B06F096E1BD8819E005C935E /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F096D1BD8819E005C935E /* MessageViewController.swift */; };
 		B09A721E1BDDAB0700E489CD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A721D1BDDAB0700E489CD /* SettingsViewController.swift */; };
-		B0E2A60B1BD9DAD5009ABB95 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2A6091BD9DAD5009ABB95 /* MessageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5270252B1BE9667C00B5DE92 /* MsgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgTableViewCell.swift; sourceTree = "<group>"; };
+		5270252C1BE9667C00B5DE92 /* MsgTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgTableViewCell.xib; sourceTree = "<group>"; };
 		529377D61BDC552C00F26223 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		529377D71BDC552C00F26223 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		B016C5AC1BD9E70A009D12A7 /* RbcViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RbcViewController.swift; sourceTree = "<group>"; };
@@ -35,7 +38,6 @@
 		B06F096B1BD87CA3005C935E /* ConvViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvViewController.swift; sourceTree = "<group>"; };
 		B06F096D1BD8819E005C935E /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		B09A721D1BDDAB0700E489CD /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		B0E2A6091BD9DAD5009ABB95 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +76,8 @@
 				B06F096B1BD87CA3005C935E /* ConvViewController.swift */,
 				529377D61BDC552C00F26223 /* LoginViewController.swift */,
 				529377D71BDC552C00F26223 /* LoginViewController.xib */,
-				B0E2A6091BD9DAD5009ABB95 /* MessageTableViewCell.swift */,
+				5270252B1BE9667C00B5DE92 /* MsgTableViewCell.swift */,
+				5270252C1BE9667C00B5DE92 /* MsgTableViewCell.xib */,
 				B06F095D1BD87825005C935E /* Main.storyboard */,
 				B09A721D1BDDAB0700E489CD /* SettingsViewController.swift */,
 				B06F096D1BD8819E005C935E /* MessageViewController.swift */,
@@ -143,6 +146,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5270252E1BE9667C00B5DE92 /* MsgTableViewCell.xib in Resources */,
 				529377D91BDC552C00F26223 /* LoginViewController.xib in Resources */,
 				B06F09641BD87825005C935E /* LaunchScreen.storyboard in Resources */,
 				B06F09611BD87825005C935E /* Assets.xcassets in Resources */,
@@ -157,11 +161,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5270252D1BE9667C00B5DE92 /* MsgTableViewCell.swift in Sources */,
 				529377D81BDC552C00F26223 /* LoginViewController.swift in Sources */,
 				B06F095C1BD87825005C935E /* TopicViewController.swift in Sources */,
 				B06F096C1BD87CA3005C935E /* ConvViewController.swift in Sources */,
 				B06F096E1BD8819E005C935E /* MessageViewController.swift in Sources */,
-				B0E2A60B1BD9DAD5009ABB95 /* MessageTableViewCell.swift in Sources */,
 				B016C5AD1BD9E70A009D12A7 /* RbcViewController.swift in Sources */,
 				B06F095A1BD87825005C935E /* AppDelegate.swift in Sources */,
 				B09A721E1BDDAB0700E489CD /* SettingsViewController.swift in Sources */,

@@ -26,8 +26,8 @@ class SettingsViewController: RbcViewController {
         do {
             let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
             print(json)
-            var userMessage = "You are not logged in"
-            if json["status"] as! NSInteger == 200 {
+            var userMessage = String(json["msg"] as! NSString)
+            if userMessage  == "OK" {
                 let userName = String(json["username"]!)
                 NSUserDefaults.standardUserDefaults().setValue(userName, forKey: "username")
                 userMessage = "You are logged in as \(userName)"
@@ -43,11 +43,11 @@ class SettingsViewController: RbcViewController {
     }
 
     func checkLogin() {
-        let url = NSURL(string:"http://localhost:3000/sessions/who")!
+        let url = NSURL(string:"http://localhost:3000/api/sessions")!
         print("Will call \(url)")
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url){ (data, response, error) -> Void in
-            if (error == nil) {
+            if (error == nil ) {
                 self.processServerData(data!)
             } else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in

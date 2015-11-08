@@ -20,13 +20,15 @@ class MessageViewController: RbcViewController, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("msgcell", forIndexPath: indexPath) as! MessageTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("msgcell", forIndexPath: indexPath) as! MsgTableViewCell
         let message = String(messages[indexPath.row].objectForKey("content")!)
         let userName = String(messages[indexPath.row].objectForKey("username")!)
         let displayDate = displayDateFromJSON(String(messages[indexPath.row].objectForKey("updated_at")!))
 
         cell.lblMain.text = message
-        cell.lblSecondary.text = "From \(userName) at \(displayDate) "
+        cell.btnAuthor.setTitle("From \(userName) at \(displayDate)", forState: UIControlState.Normal) 
+        cell.setNeedsUpdateConstraints()
+        cell.updateConstraintsIfNeeded()
         return cell
     }
 
@@ -47,6 +49,9 @@ class MessageViewController: RbcViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("vdl in MessageViewController")
+        let nib = UINib(nibName: "MsgTableViewCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "msgcell")
+        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 160.0
         if let topicId = currentConversation.objectForKey("topic_id") {
